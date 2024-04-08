@@ -56,9 +56,12 @@ const CarForm = ({ car, isModifying, ...otherProps }: Props) => {
     resolver: zodResolver(carSchema),
     defaultValues: isModifying && car ? car : defaultCar,
   })
+  void api.useUtils().cars.getAll.invalidate()
+  void api.useUtils().cars.getById.invalidate()
 
   const handleSubmit = async (data: Car) => {
     await mutateAsync(data)
+
     if (isModifying) {
       router.push("/cars/")
 
