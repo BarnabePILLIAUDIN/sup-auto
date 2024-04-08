@@ -1,47 +1,84 @@
-import Link from "next/link"
-
-import { api } from "@/trpc/server"
+import Image from "next/image"
 
 const Home = async () => {
-  const hello = await api.post.hello({ text: "from tRPC" })
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
-        </div>
+    <>
+      <div className="mx-auto flex w-3/4 flex-row items-center justify-between bg-slate-200">
+        <Image
+          src="/car.png"
+          alt="the best supotomobile"
+          width={400}
+          height={150}
+        />
+
+        <h2 className="w-full text-center text-xl font-semibold">
+          The future of automobile
+        </h2>
       </div>
-    </main>
+      <div>
+        <p className="mx-auto mt-5 w-3/4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+          et blanditiis quod. Beatae dignissimos dolores explicabo veniam
+          inventore amet autem harum cum, recusandae voluptas repellat quisquam
+          numquam quia rem architecto consequuntur facere quasi. Itaque dolorum
+          eaque voluptatibus porro nesciunt corrupti cupiditate ad modi at vero
+          necessitatibus ratione quisquam, quo eos perspiciatis eligendi ipsum
+          eius perferendis? Aut et est facere at omnis, consectetur rerum quos,
+          numquam sint, quaerat delectus reiciendis atque enim mollitia.
+          Deserunt repellat architecto assumenda sapiente maxime ipsum
+          doloremque dignissimos facilis recusandae nulla veniam velit, ad iste
+          inventore, magnam nemo excepturi atque expedita quo asperiores?
+          Nesciunt, voluptate corporis similique et eaque impedit ducimus,
+          accusantium, debitis aliquam ad eos dolor laboriosam maiores eligendi
+          omnis vel consequuntur doloremque dicta neque tempore? Alias,
+          perferendis. Magni alias eum voluptatem eos id, quia odio repudiandae
+          in soluta amet perferendis fugit obcaecati reiciendis, blanditiis,
+          tempore rerum ex vitae ut libero ipsa cum esse eveniet perspiciatis.
+        </p>
+      </div>
+      <div>
+        <p className="mx-auto mt-5 w-3/4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+          et blanditiis quod. Beatae dignissimos dolores explicabo veniam
+          inventore amet autem harum cum, recusandae voluptas repellat quisquam
+          numquam quia rem architecto consequuntur facere quasi. Itaque dolorum
+          eaque voluptatibus porro nesciunt corrupti cupiditate ad modi at vero
+          necessitatibus ratione quisquam, quo eos perspiciatis eligendi ipsum
+          eius perferendis? Aut et est facere at omnis, consectetur rerum quos,
+          numquam sint, quaerat delectus reiciendis atque enim mollitia.
+          Deserunt repellat architecto assumenda sapiente maxime ipsum
+          doloremque dignissimos facilis recusandae nulla veniam velit, ad iste
+          inventore, magnam nemo excepturi atque expedita quo asperiores?
+          Nesciunt, voluptate corporis similique et eaque impedit ducimus,
+          accusantium, debitis aliquam ad eos dolor laboriosam maiores eligendi
+          omnis vel consequuntur doloremque dicta neque tempore? Alias,
+          perferendis. Magni alias eum voluptatem eos id, quia odio repudiandae
+          in soluta amet perferendis fugit obcaecati reiciendis, blanditiis,
+          tempore rerum ex vitae ut libero ipsa cum esse eveniet perspiciatis.
+        </p>
+      </div>
+      <div>
+        <p className="mx-auto mt-5 w-3/4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+          et blanditiis quod. Beatae dignissimos dolores explicabo veniam
+          inventore amet autem harum cum, recusandae voluptas repellat quisquam
+          numquam quia rem architecto consequuntur facere quasi. Itaque dolorum
+          eaque voluptatibus porro nesciunt corrupti cupiditate ad modi at vero
+          necessitatibus ratione quisquam, quo eos perspiciatis eligendi ipsum
+          eius perferendis? Aut et est facere at omnis, consectetur rerum quos,
+          numquam sint, quaerat delectus reiciendis atque enim mollitia.
+          Deserunt repellat architecto assumenda sapiente maxime ipsum
+          doloremque dignissimos facilis recusandae nulla veniam velit, ad iste
+          inventore, magnam nemo excepturi atque expedita quo asperiores?
+          Nesciunt, voluptate corporis similique et eaque impedit ducimus,
+          accusantium, debitis aliquam ad eos dolor laboriosam maiores eligendi
+          omnis vel consequuntur doloremque dicta neque tempore? Alias,
+          perferendis. Magni alias eum voluptatem eos id, quia odio repudiandae
+          in soluta amet perferendis fugit obcaecati reiciendis, blanditiis,
+          tempore rerum ex vitae ut libero ipsa cum esse eveniet perspiciatis.
+        </p>
+      </div>
+    </>
   )
 }
 
