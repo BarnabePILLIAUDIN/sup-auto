@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/forms/users/SignUpForm"
+import SignInForm from "@/components/forms/users/SignInForm"
 import Image from "next/image"
 
 const Page = () => {
@@ -7,9 +7,12 @@ const Page = () => {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Sign Up</h1>
+            <h1 className="text-3xl font-bold">Sign In</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your email below to login to your account
+            </p>
           </div>
-          <SignUpForm />
+          <SignInForm />
         </div>
       </div>
       <div className="hidden max-h-dvh bg-muted lg:block">
