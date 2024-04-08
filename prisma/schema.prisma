@@ -32,6 +32,7 @@ model Car {
     id             String   @id @default(cuid())
     name           String
     yearOfCreation Int
+    description    String
     price          Float
     createdAt      DateTime @default(now())
     updatedAt      DateTime @updatedAt
