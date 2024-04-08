@@ -27,7 +27,9 @@ const CarCard = (props: Props) => {
   return (
     <div key={id} className="w-96 rounded-md border-2 border-black px-4 py-2">
       <div className="flex flex-row items-center justify-between">
-        <h3 className="font-bold">{name}</h3>
+        <h3 className="font-bold">
+          <Link href={`/cars/${id}`}> {name} </Link>
+        </h3>
         <p className="font-semibold">{price} €</p>
       </div>
       <p>{description}</p>
