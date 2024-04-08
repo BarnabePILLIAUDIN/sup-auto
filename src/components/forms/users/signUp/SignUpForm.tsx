@@ -6,10 +6,11 @@ import { Form } from "@/components/ui/Form"
 import { type SignUpInput, signUpSchema } from "@/schemas/users"
 import { api } from "@/trpc/react"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { type SubmitHandler, useForm } from "react-hook-form"
 
 const SignUpForm = () => {
-  const { mutateAsync } = api.users.signUp.useMutation()
+  const { mutate } = api.users.signUp.useMutation()
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -17,9 +18,14 @@ const SignUpForm = () => {
       password: "",
     },
   })
+  const router = useRouter()
 
   const onSubmit: SubmitHandler<SignUpInput> = async (values) => {
-    await mutateAsync(values)
+    mutate(values, {
+      onSuccess: () => {
+        void router.push("/auth/sign-in")
+      },
+    })
   }
 
   return (
