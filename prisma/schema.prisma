@@ -9,3 +9,41 @@ datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
+
+enum Role {
+    ADMIN
+    USER
+    ENTERPRISE
+}
+
+model User {
+    id           String   @id @default(cuid())
+    email        String   @unique
+    name         String?
+    passwordHash String
+    passwordSalt String
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    roles        Role
+    Order        Order[]
+}
+
+model Car {
+    id             String   @id @default(cuid())
+    name           String
+    yearOfCreation Int
+    price          Float
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
+    Order          Order[]
+}
+
+model Order {
+    id        String   @id @default(cuid())
+    carId     String
+    userId    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    car       Car      @relation(fields: [carId], references: [id])
+    user      User     @relation(fields: [userId], references: [id])
+}
