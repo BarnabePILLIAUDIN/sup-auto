@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const Navbar = () => (
-  <nav className="flex justify-between px-5 py-5 ">
+  <nav className="flex justify-between px-5 py-5">
     <h1 className="text-2xl font-bold">
       <Link href="/">SUPOTOMOBILE</Link>
     </h1>
@@ -10,10 +10,10 @@ const Navbar = () => (
         <Link href="/cars">Cars</Link>
       </li>
       <li>
-        <Link href="/signin">Sign in</Link>
+        <Link href="/auth/sign-in">Sign in</Link>
       </li>
       <li>
-        <Link href="/signup">Sign up</Link>
+        <Link href="/auth/sign-up">Sign up</Link>
       </li>
     </ul>
   </nav>
