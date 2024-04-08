@@ -1,7 +1,13 @@
+import config from "@/server/config"
+import { env } from "@/env"
 import { hashPassword } from "@/lib/hashPassword"
-import { signUpSchema } from "@/schemas/users"
+import { signInSchema, signUpSchema } from "@/schemas/users"
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc"
 import { TRPCError } from "@trpc/server"
+import jsonwebtoken from "jsonwebtoken"
+import { cookies } from "next/headers"
+import { pick } from "radash"
+import ms from "ms"
 
 const usersRouter = createTRPCRouter({
   signUp: publicProcedure
@@ -31,6 +37,56 @@ const usersRouter = createTRPCRouter({
 
       return true
     }),
+
+  signIn: publicProcedure
+    .input(signInSchema)
+    .mutation(async ({ ctx, input }) => {
+      const exisitingUser = await ctx.db.user.findFirst({
+        where: { email: input.email },
+      })
+
+      console.log("exisitingUser", exisitingUser)
+
+      if (!exisitingUser) {
+        throw new TRPCError({ code: "UNAUTHORIZED" })
+      }
+
+      const { hash } = await hashPassword(
+        input.password,
+        exisitingUser.passwordSalt,
+      )
+
+      console.log("hash", hash, exisitingUser.passwordHash)
+
+      if (hash !== exisitingUser.passwordHash) {
+        throw new TRPCError({ code: "UNAUTHORIZED" })
+      }
+
+      const jwt = jsonwebtoken.sign(
+        { payload: { user: pick(exisitingUser, ["id", "email", "roles"]) } },
+        env.JWT_SECRET,
+        { expiresIn: config.security.expiresIn },
+      )
+      const cookieJwt = jsonwebtoken.sign({ payload: jwt }, env.JWT_SECRET, {
+        expiresIn: config.security.expiresIn,
+      })
+
+      cookies().set(config.security.cookie.key, cookieJwt, {
+        path: "/",
+        sameSite: "strict",
+        httpOnly: true,
+        secure: config.security.cookie.secure,
+        expires: Date.now() + ms(config.security.expiresIn),
+      })
+
+      return jwt
+    }),
+
+  signOut: publicProcedure.mutation(() => {
+    cookies().delete(config.security.cookie.key)
+
+    return true
+  }),
 })
 
 export default usersRouter
