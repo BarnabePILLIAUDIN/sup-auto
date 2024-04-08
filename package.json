@@ -9,7 +9,8 @@
     "db:studio": "prisma studio",
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "lint": "next lint",
+    "lint": "next lint && eslint .",
+    "format": "prettier --write .",
     "start": "next start"
   },
   "dependencies": {
