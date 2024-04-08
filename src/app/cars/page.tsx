@@ -1,14 +1,10 @@
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/Form"
+"use client"
+
+import { Form } from "@/components/ui/Form"
 import { api } from "../../trpc/react"
-import { Car } from "@/server/api/routers/cars"
+import { type Car } from "@/server/api/routers/cars"
 import { useForm } from "react-hook-form"
+import GenericField from "@/components/forms/GenericField"
 
 const formFields = [
   {
@@ -47,24 +43,10 @@ const Page = () => {
       <h1>Cars</h1>
       <section>
         <h2>Add</h2>
-        <Form>
-          {formFields.map(({ type, label, name }) => (
-            <FormField
-              control={form.control}
-              name={name}
-              key={name}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{label}</FormLabel>
-                  <FormControl>
-                    <input {...field} type={type} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <Form {...form}>
+          {formFields.map((field) => (
+            <GenericField key={field.name} {...field} />
           ))}
-
           <button type="submit">Add</button>
         </Form>
       </section>
