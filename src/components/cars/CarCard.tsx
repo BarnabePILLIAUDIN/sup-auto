@@ -8,13 +8,13 @@ type Props = {
 
 const CarCard = ({ car }: Props) => {
   return (
-    <div className="mx-auto flex w-1/2 rounded-xl border-2 border-black  p-5">
-      <Image
-        src="/car-big.png"
+    <div className="mx-auto flex w-1/2 gap-2 rounded-xl border-2 border-black p-7">
+      <img
+        src={car.photoURL || "/car-big.jpg"}
         alt="The best car"
         width={400}
         height={100}
-        className="w-96"
+        className="w-96 rounded-xl "
       />
       <div className="w-full ">
         <div className="flex justify-between ">
