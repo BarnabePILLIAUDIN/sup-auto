@@ -1,12 +1,12 @@
-import OurCars from "@/components/cars/OurCars"
-import CarForm from "../../components/forms/CarForm"
+import { api } from "@/trpc/server"
+import OurCars from "../../components/cars/OurCars"
+const Page = async () => {
+  const cars = await api.cars.getAll()
 
-const Page = () => {
   return (
-    <div>
+    <div className="">
       <h1 className="py-8 text-center text-4xl font-extrabold">Cars</h1>
-      <CarForm isModifying={false} car={null} />
-      <OurCars />
+      <OurCars cars={cars ?? []} />
     </div>
   )
 }
