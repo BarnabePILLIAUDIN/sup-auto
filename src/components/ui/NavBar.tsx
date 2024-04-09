@@ -14,7 +14,7 @@ const Navbar = () => {
         <li>
           <Link href="/cars">Cars</Link>
         </li>
-        {session ? (
+        {!session ? (
           <>
             <li>
               <Link href="/auth/sign-in">Sign in</Link>
@@ -25,6 +25,11 @@ const Navbar = () => {
           </>
         ) : (
           <>
+            {session.user.roles === "ADMIN" && (
+              <li>
+                <Link href="/admin">Admin</Link>
+              </li>
+            )}
             <li>
               <button onClick={signOut}>Sign out</button>
             </li>
