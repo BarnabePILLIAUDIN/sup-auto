@@ -1,3 +1,12 @@
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/Card"
+import formatPrice from "@/lib/formatPrice"
 import { type Car } from "@/server/api/routers/cars"
 import Image from "next/image"
 import Link from "next/link"
@@ -6,27 +15,27 @@ type Props = {
   car: Car
 }
 
-const CarCard = ({ car }: Props) => {
-  return (
-    <div className="mx-auto flex w-1/2 rounded-xl border-2 border-black  p-5">
-      <Image
-        src="/car-big.png"
-        alt="The best car"
-        width={400}
-        height={100}
-        className="w-96"
-      />
-      <div className="w-full ">
-        <div className="flex justify-between ">
-          <h3 className="text-2xl font-extrabold">
-            <Link href={`/cars/${car.id}`}> {car.name} </Link>
-          </h3>
-          <h4 className="text-xl font-semibold">{car.price} €</h4>
-        </div>
-        <p className="mt-5 font-medium">{car.description}</p>
-      </div>
-    </div>
-  )
-}
+const CarCard = ({ car }: Props) => (
+  <Link href={`/cars/${car.id}`}>
+    <Card className="transition-colors !duration-150 hover:bg-neutral-100">
+      <CardHeader>
+        <CardTitle>{car.name}</CardTitle>
+        <CardDescription>{car.description}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Image
+          src="/car-big.png"
+          alt="The best car"
+          width={400}
+          height={100}
+          className="w-96"
+        />
+      </CardContent>
+      <CardFooter className="justify-end">
+        <p className="text-xl font-bold">{formatPrice(car.price)}</p>
+      </CardFooter>
+    </Card>
+  </Link>
+)
 
 export default CarCard
