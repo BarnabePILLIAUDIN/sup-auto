@@ -13,3 +13,9 @@ export type RawJwt = {
   exp: number
   payload: JwtPayload
 }
+
+export type RawCookie = {
+  iat: number
+  exp: number
+  payload: string
+}

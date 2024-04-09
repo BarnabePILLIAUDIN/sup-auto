@@ -1,16 +1,22 @@
 "use client"
 
 import { Button } from "@/components/ui/Button"
-import useSession from "@/hooks/useSession"
+import { api } from "@/trpc/react"
+import { toast } from "sonner"
 
-const BuyButton = () => {
-  const { session } = useSession()
+type Props = {
+  carId: string
+}
 
-  return (
-    <Button className="mt-4 px-8 py-4 text-2xl uppercase">
-      {session?.user.roles === "ENTERPRISE" ? "Rent" : "Buy"} mine
-    </Button>
-  )
+const BuyButton = (props: Props) => {
+  const { mutate } = api.cars.buy.useMutation()
+
+  const handleClick = () => {
+    mutate(props)
+    toast.success("You bought a car!")
+  }
+
+  return <Button onClick={handleClick}>Buy mine</Button>
 }
 
 export default BuyButton
