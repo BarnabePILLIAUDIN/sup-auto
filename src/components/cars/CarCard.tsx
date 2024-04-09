@@ -10,20 +10,23 @@ import formatPrice from "@/lib/formatPrice"
 import { type Car } from "@/server/api/routers/cars"
 import Image from "next/image"
 import Link from "next/link"
+import { date } from "zod"
 
 type Props = {
   car: Car
+  dates: Date[]
 }
 
-const CarCard = ({ car }: Props) => (
+const CarCard = ({ car, dates }: Props) => (
   <Link href={`/cars/${car.id}`}>
     <Card className="transition-colors !duration-150 hover:bg-neutral-100">
       <CardHeader>
         <CardTitle>{car.name}</CardTitle>
+        {dates?.map((date) => new Date(date).toLocaleDateString()).join(" - ")}
         <CardDescription>{car.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Image
+        <img
           src={car.photoURL ?? "/car-big.png"}
           alt="The best car"
           width={400}

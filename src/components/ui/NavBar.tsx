@@ -25,11 +25,14 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {session.user.roles === "ADMIN" && (
+            {session.user.role === "ADMIN" && (
               <li>
                 <Link href="/admin">Admin</Link>
               </li>
             )}
+            <li>
+              <Link href="/orders"> My orders </Link>
+            </li>
             <li>
               <button onClick={signOut}>Sign out</button>
             </li>

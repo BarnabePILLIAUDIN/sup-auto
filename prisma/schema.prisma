@@ -61,10 +61,8 @@ model Rent {
     updatedAt DateTime @updatedAt
     from      DateTime
     to        DateTime
-
-    car   Car    @relation(fields: [carId], references: [id])
-    carId String
-
-    user   User   @relation(fields: [userId], references: [id])
-    userId String
+    car       Car      @relation(fields: [carId], references: [id])
+    carId     String
+    user      User     @relation(fields: [userId], references: [id])
+    userId    String
 }
