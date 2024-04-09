@@ -31,6 +31,9 @@ const Navbar = () => {
               </li>
             )}
             <li>
+              <Link href="/orders"> My orders </Link>
+            </li>
+            <li>
               <button onClick={signOut}>Sign out</button>
             </li>
           </>

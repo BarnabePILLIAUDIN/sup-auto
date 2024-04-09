@@ -23,7 +23,7 @@ const CarCard = ({ car }: Props) => (
         <CardDescription>{car.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Image
+        <img
           src={car.photoURL ?? "/car-big.png"}
           alt="The best car"
           width={400}
