@@ -1,3 +1,5 @@
+"use client"
+
 import config from "@/config"
 import { api } from "@/trpc/react"
 import { type JwtPayload, type RawJwt } from "@/types/auth"

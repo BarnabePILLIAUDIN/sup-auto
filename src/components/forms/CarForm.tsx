@@ -32,6 +32,11 @@ const formFields = [
     label: "Year of creation",
     type: "number",
   },
+  {
+    name: "photoURL",
+    label: "Photo",
+    type: "text",
+  },
 ]
 
 type Props = {

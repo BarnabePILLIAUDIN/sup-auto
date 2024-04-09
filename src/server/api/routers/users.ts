@@ -45,7 +45,6 @@ const usersRouter = createTRPCRouter({
         where: { email: input.email },
       })
 
-      console.log("exisitingUser", exisitingUser)
 
       if (!exisitingUser) {
         throw new TRPCError({ code: "UNAUTHORIZED" })
@@ -55,8 +54,6 @@ const usersRouter = createTRPCRouter({
         input.password,
         exisitingUser.passwordSalt,
       )
-
-      console.log("hash", hash, exisitingUser.passwordHash)
 
       if (hash !== exisitingUser.passwordHash) {
         throw new TRPCError({ code: "UNAUTHORIZED" })

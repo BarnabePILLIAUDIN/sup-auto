@@ -34,6 +34,7 @@ model Car {
     yearOfCreation Int
     description    String
     price          Float
+    photoURL       String   @default("https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
     createdAt      DateTime @default(now())
     updatedAt      DateTime @updatedAt
     Order          Order[]

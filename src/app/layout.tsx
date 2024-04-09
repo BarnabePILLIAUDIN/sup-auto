@@ -30,8 +30,10 @@ export default function RootLayout({
           inter.variable,
         )}
       >
-        <Navbar />
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Navbar />
+          {children}
+        </TRPCReactProvider>
       </body>
     </html>
   )

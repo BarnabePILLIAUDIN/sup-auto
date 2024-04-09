@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button"
+import BuyButton from "@/components/forms/BuyButton"
 import { api } from "@/trpc/server"
 import Image from "next/image"
 
@@ -30,7 +30,7 @@ const Page = async ({ params: { carId } }: Props) => {
         <h3 className="text-2xl font-bold ">{car.price} €</h3>
       </div>
       <p className="mt-5 font-semibold">{car.description}</p>
-      <Button className="mt-4 px-8 py-4 text-2xl uppercase">Buy mine</Button>
+      <BuyButton />
     </div>
   )
 }
