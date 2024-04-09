@@ -14,9 +14,9 @@ import {
 import { type RentCarInput, rentCarSchema } from "@/schemas/cars"
 import { api } from "@/trpc/react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { DateTime } from "luxon"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
+import DateRangePickerField from "@/components/forms/DateRangePickerField"
 
 type Props = {
   carId: string
@@ -29,11 +29,12 @@ const RentButton = ({ carId }: Props) => {
     defaultValues: {
       carId,
       from: new Date(),
-      to: DateTime.now().plus({ days: 7 }).toJSDate(),
     },
   })
 
   const handleSubmit: SubmitHandler<RentCarInput> = (values) => {
+    console.log("values", values)
+
     mutate(values)
     toast.success("You rented a car!")
   }
@@ -52,10 +53,11 @@ const RentButton = ({ carId }: Props) => {
                 Are you sure you want to rent this car?
               </DialogDescription>
             </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <DateRangePickerField label="Select a range" />
+            </div>
             <DialogFooter>
-              <Button type="submit" variant="secondary">
-                Rent
-              </Button>
+              <Button type="submit">Rent</Button>
             </DialogFooter>
           </form>
         </Form>
