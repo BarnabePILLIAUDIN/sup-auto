@@ -25,7 +25,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {session.user.roles === "ADMIN" && (
+            {session.user.role === "ADMIN" && (
               <li>
                 <Link href="/admin">Admin</Link>
               </li>
