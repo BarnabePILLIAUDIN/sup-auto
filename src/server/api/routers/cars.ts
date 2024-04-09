@@ -1,4 +1,4 @@
-import { addCarSchema, buyCarSchema } from "@/schemas/cars"
+import { addCarSchema, buyCarSchema, rentCarSchema } from "@/schemas/cars"
 import {
   createTRPCRouter,
   protectedProcedure,
@@ -70,9 +70,11 @@ const carsRouter = createTRPCRouter({
     }),
   ),
 
-  // rent: protectedProcedure
-  //   .input(rentCarSchema)
-  //   .mutation(async ({ ctx, input }) => {}),
+  rent: protectedProcedure
+    .input(rentCarSchema)
+    .mutation(({ ctx, input }) =>
+      ctx.db.rent.create({ data: { ...input, userId: ctx.session.user.id } }),
+    ),
 })
 
 export default carsRouter

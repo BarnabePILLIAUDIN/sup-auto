@@ -12,7 +12,7 @@ const config = {
         protocol: "https",
         hostname: "images.pexels.com",
         port: "",
-        pathname: "/photos/",
+        pathname: "/photos/**",
       },
     ],
   },

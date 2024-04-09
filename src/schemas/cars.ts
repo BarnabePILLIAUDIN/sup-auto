@@ -20,3 +20,4 @@ export const rentCarSchema = z.object({
 })
 
 export type Car = z.infer<typeof addCarSchema>
+export type RentCarInput = z.infer<typeof rentCarSchema>
