@@ -35,8 +35,8 @@ const Page = async ({ params: { carId } }: Props) => {
       </div>
       <p className="mt-5 font-semibold">{car.description}</p>
       <div className="mt-5">
-        {session?.user.roles === "USER" && <BuyButton carId={carId} />}
-        {session?.user.roles === "ENTERPRISE" && <RentButton carId={carId} />}
+        {session?.user.role === "USER" && <BuyButton carId={carId} />}
+        {session?.user.role === "ENTERPRISE" && <RentButton carId={carId} />}
       </div>
     </div>
   )
