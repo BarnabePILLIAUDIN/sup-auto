@@ -4,7 +4,7 @@ export type JwtPayload = {
   user: {
     id: string
     email: string
-    roles: $Enums.Role
+    role: $Enums.Role
   }
 }
 

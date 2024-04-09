@@ -31,7 +31,6 @@ const usersRouter = createTRPCRouter({
           email: input.email,
           passwordHash: hash,
           passwordSalt: salt,
-          roles: "USER",
         },
       })
 
@@ -44,7 +43,6 @@ const usersRouter = createTRPCRouter({
       const exisitingUser = await ctx.db.user.findFirst({
         where: { email: input.email },
       })
-
 
       if (!exisitingUser) {
         throw new TRPCError({ code: "UNAUTHORIZED" })
@@ -60,7 +58,7 @@ const usersRouter = createTRPCRouter({
       }
 
       const jwt = jsonwebtoken.sign(
-        { payload: { user: pick(exisitingUser, ["id", "email", "roles"]) } },
+        { payload: { user: pick(exisitingUser, ["id", "email", "role"]) } },
         env.JWT_SECRET,
         { expiresIn: config.security.expiresIn },
       )

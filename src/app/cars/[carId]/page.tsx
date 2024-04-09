@@ -33,8 +33,8 @@ const Page = async ({ params: { carId } }: Props) => {
         <h3 className="text-2xl font-bold ">{car.price} €</h3>
       </div>
       <p className="mt-5 font-semibold">{car.description}</p>
-      {session?.user.roles === "USER" && <BuyButton carId={carId} />}
-      {session?.user.roles === "ENTERPRISE" && <RentButton carId={carId} />}
+      {session?.user.role === "USER" && <BuyButton carId={carId} />}
+      {session?.user.role === "ENTERPRISE" && <RentButton carId={carId} />}
     </div>
   )
 }
