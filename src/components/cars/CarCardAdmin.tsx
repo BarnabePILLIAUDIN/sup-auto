@@ -10,7 +10,7 @@ type Props = {
   car: Car
 }
 
-const CarCard = (props: Props) => {
+const CarCardAdmin = (props: Props) => {
   const {
     car: { id, name, description, price, yearOfCreation },
   } = props
@@ -51,4 +51,4 @@ const CarCard = (props: Props) => {
   )
 }
 
-export default CarCard
+export default CarCardAdmin

@@ -16,7 +16,7 @@ const Page = () => {
   }
 
   return (
-    <div>
+    <div className="py-7">
       <h1 className="py-8 text-center text-4xl font-extrabold">
         Administration
       </h1>

@@ -8,7 +8,7 @@ type Props = {
 const OurCars = ({ cars }: Props) => (
   <div className="flex flex-col gap-6">
     {cars.map((car) => (
-      <CarCard car={car} key={car.id} />
+      <CarCard car={car} key={car.id} dates={[]} />
     ))}
   </div>
 )

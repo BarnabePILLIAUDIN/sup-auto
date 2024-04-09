@@ -22,9 +22,11 @@ const Page = () => {
     <>
       <h1 className="mb-4 mt-5 text-center text-4xl font-bold">My orders</h1>
       {orders?.length === 0 && rents?.length === 0 && (
-        <h2>You do not have any orders yet </h2>
+        <h2 className="mt-5 text-center text-xl font-bold text-red-500">
+          You do not have any orders yet{" "}
+        </h2>
       )}
-      {orders?.map(({ car }, id) => <CarCard car={car} key={id} />)}
+      {orders?.map(({ car }, id) => <CarCard car={car} key={id} dates={[]} />)}
       {rents?.map(({ car, from, to }, id) => (
         <CarCard car={car} key={id} dates={[from, to]} />
       ))}
