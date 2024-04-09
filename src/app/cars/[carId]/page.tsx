@@ -1,4 +1,6 @@
 import BuyButton from "@/components/forms/BuyButton"
+import RentButton from "@/components/forms/RentButton"
+import getSession from "@/lib/getSession"
 import { api } from "@/trpc/server"
 import Image from "next/image"
 
@@ -10,6 +12,7 @@ type Props = {
 
 const Page = async ({ params: { carId } }: Props) => {
   const car = await api.cars.getById(carId)
+  const session = await getSession()
 
   if (!car) {
     return <div>Car not found</div>
@@ -30,7 +33,8 @@ const Page = async ({ params: { carId } }: Props) => {
         <h3 className="text-2xl font-bold ">{car.price} €</h3>
       </div>
       <p className="mt-5 font-semibold">{car.description}</p>
-      <BuyButton />
+      {session?.user.roles === "USER" && <BuyButton carId={carId} />}
+      {session?.user.roles === "ENTERPRISE" && <RentButton carId={carId} />}
     </div>
   )
 }

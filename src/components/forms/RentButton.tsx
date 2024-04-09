@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/Button"
 
-const RentButton = () => {
+type Props = {
+  carId: string
+}
+
+const RentButton = (props: Props) => {
   return <Button>Rent mine</Button>
 }
 

@@ -1,5 +1,5 @@
 import CarCard from "@/components/cars/CarCard"
-import { type Car } from "@/schemas/car"
+import { type Car } from "@/schemas/cars"
 
 type Props = {
   cars: Car[]

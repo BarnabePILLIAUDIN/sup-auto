@@ -1,7 +1,7 @@
 "use client"
 
 import GenericField from "@/components/forms/GenericField"
-import { carSchema } from "@/schemas/car"
+import { addCarSchema } from "@/schemas/cars"
 import { api } from "@/trpc/react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type Car } from "@prisma/client"
@@ -58,7 +58,7 @@ const CarForm = ({ car, isModifying, ...otherProps }: Props) => {
   const router = useRouter()
 
   const form = useForm<Car>({
-    resolver: zodResolver(carSchema),
+    resolver: zodResolver(addCarSchema),
     defaultValues: isModifying && car ? car : defaultCar,
   })
   void api.useUtils().cars.getAll.invalidate()
