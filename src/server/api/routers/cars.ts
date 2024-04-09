@@ -16,6 +16,7 @@ const carsRouter = createTRPCRouter({
         yearOfCreation: input.yearOfCreation ?? currentYear,
         price: input.price,
         description: input.description,
+        photoURL: input.photoURL,
       },
     })
   }),
@@ -26,6 +27,7 @@ const carsRouter = createTRPCRouter({
         yearOfCreation: input.yearOfCreation,
         price: input.price,
         description: input.description,
+        photoURL: input.photoURL,
       },
       where: {
         id: input.id,
